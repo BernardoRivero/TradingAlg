@@ -2,6 +2,7 @@ from __future__ import (absolute_import, division, print_function, unicode_liter
 import datetime
 from GoldenCross import GoldenCross
 import backtrader as bt 
+from GoldenCrossWithRSI import GoldenCrossWithRSI
 from StochRSI import StochRSIStrategy
 from BuyOnHammer import BuyOnHammer
 
@@ -70,10 +71,8 @@ def run():
     saldoInicial = cerebro.broker.getvalue()
     print('Saldo Inicial: %.2f' % saldoInicial)
 
-    cerebro.adddata(dataMETA)
-    cerebro.addstrategy(StochRSIStrategy)
-    #cerebro.addstrategy(GoldenCross)
-    #cerebro.addstrategy(BuyOnHammer)
+    cerebro.adddata(dataORCL)
+    cerebro.addstrategy(GoldenCrossWithRSI)
 
 
     cerebro.broker.setcommission(commission=0.001)
